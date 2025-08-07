@@ -42,29 +42,13 @@ export default function EventsSection() {
           </CMSControl>
         </div>
 
-        <div className="text-center">
-          <a 
-            href="#home" 
-            className="btn btn--primary btn--large"
-            onClick={(e) => {
-              e.preventDefault()
-              const target = document.querySelector('#home')
-              if (target) {
-                target.scrollIntoView({
-                  behavior: 'smooth',
-                  block: 'start'
-                })
-              }
-            }}
-          >
-            Back to Home
-          </a>
-          {isAdmin && (
+        {isAdmin && (
+          <div className="text-center">
             <button onClick={openCMS} className="btn btn--secondary btn--large">
               Manage Content
             </button>
-          )}
-        </div>
+          </div>
+        )}
       </div>
     </section>
   )

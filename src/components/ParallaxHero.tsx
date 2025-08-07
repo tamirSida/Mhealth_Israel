@@ -93,11 +93,13 @@ export default function ParallaxHero() {
         
       </div>
 
+      {/* Our Impact Title */}
+      <div className="hero-impact-title">
+        <h3 className="marquee-title">Our Impact in Numbers</h3>
+      </div>
+
       {/* Marquee Stats Strip */}
       <div className="hero-marquee-wrapper">
-        <div className="hero-marquee-title">
-          <h3 className="marquee-title">Our Impact in Numbers</h3>
-        </div>
         <div className="hero-marquee">
           {duplicatedStats.map((stat, index) => (
             <React.Fragment key={`fragment-${index}`}>

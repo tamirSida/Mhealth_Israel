@@ -51,6 +51,16 @@ export default function UpcomingEvents() {
     }
   }
 
+  const getEventTypeIcon = (type: Event['type']) => {
+    switch (type) {
+      case 'conference': return 'fas fa-users'
+      case 'webinar': return 'fas fa-video'
+      case 'networking': return 'fas fa-handshake'
+      case 'workshop': return 'fas fa-tools'
+      default: return 'fas fa-calendar'
+    }
+  }
+
 
   return (
     <section className="section upcoming-events" id="upcoming-events" ref={elementRef}>
@@ -97,31 +107,27 @@ export default function UpcomingEvents() {
                 className="event-card"
                 onClick={() => window.open(event.registrationUrl, '_blank')}
               >
-                <img 
-                  className="event-image" 
-                  src={`/events/${event.id}.jpg`} 
-                  alt="Event image" 
-                  onError={(e) => {
-                    // Hide image and let gradient background show
-                    (e.target as HTMLImageElement).style.display = 'none';
-                  }} 
-                />
-                <div className="footer-gradient"></div>
-                <div className="event-overlay">
-                  <div className="event-logo">
-                    <div className="event-type-indicator" style={{ backgroundColor: getEventTypeColor(event.type) }}>
-                      {event.type.toUpperCase()}
-                    </div>
-                  </div>
-                  <p className="event-dates">
-                    {formatEventDate(event.date)} | {event.time}
-                  </p>
+                <div 
+                  className="event-type-badge"
+                  style={{ backgroundColor: getEventTypeColor(event.type) }}
+                >
+                  {event.type}
                 </div>
-                <div className="event-description">
-                  <p className="five-lines">{event.title}</p>
-                  <div className="event-button">
-                    <span className="btn btn--primary">Go to Event</span>
-                  </div>
+                
+                <h3 className="event-card-title">{event.title}</h3>
+                
+                <div className="event-card-date">
+                  <i className="fas fa-calendar"></i>
+                  <span>{formatEventDate(event.date)}</span>
+                </div>
+                
+                <div className="event-card-time">
+                  <i className="fas fa-clock"></i>
+                  <span>{event.time}</span>
+                </div>
+                
+                <div className="event-card-button">
+                  <span className="btn btn--primary">Register Now</span>
                 </div>
               </div>
             ))}
