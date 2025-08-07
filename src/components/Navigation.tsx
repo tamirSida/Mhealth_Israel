@@ -47,7 +47,19 @@ export default function Navigation() {
     >
       <div className="container">
         <div className="nav__container">
-          <a href="#home" className="nav__logo" onClick={(e) => handleNavClick(e, '#home')}>
+          <a href="/" className="nav__logo" onClick={(e) => {
+            e.preventDefault()
+            // If we're already on home page, scroll to top
+            if (window.location.pathname === '/') {
+              window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+              })
+            } else {
+              // If on subpage, navigate to home
+              window.location.href = '/'
+            }
+          }}>
             <Image 
               src="/logo.png" 
               alt="mHealth Israel" 
@@ -62,7 +74,7 @@ export default function Navigation() {
             <li><a href="#about" className="nav__link" onClick={(e) => handleNavClick(e, '#about')}>About</a></li>
             <li><a href="#impact" className="nav__link" onClick={(e) => handleNavClick(e, '#impact')}>Impact</a></li>
             <li><a href="#ecosystem" className="nav__link" onClick={(e) => handleNavClick(e, '#ecosystem')}>Ecosystem</a></li>
-            <li><a href="#events" className="nav__link" onClick={(e) => handleNavClick(e, '#events')}>Events</a></li>
+            <li><a href="#upcoming-events" className="nav__link" onClick={(e) => handleNavClick(e, '#upcoming-events')}>Events</a></li>
             <li>
               <a 
                 href="https://www.linkedin.com/groups/4703553/" 
@@ -83,7 +95,7 @@ export default function Navigation() {
             <a href="#about" className="nav__link" onClick={(e) => handleNavClick(e, '#about')}>About</a>
             <a href="#impact" className="nav__link" onClick={(e) => handleNavClick(e, '#impact')}>Impact</a>
             <a href="#ecosystem" className="nav__link" onClick={(e) => handleNavClick(e, '#ecosystem')}>Ecosystem</a>
-            <a href="#events" className="nav__link" onClick={(e) => handleNavClick(e, '#events')}>Events</a>
+            <a href="#upcoming-events" className="nav__link" onClick={(e) => handleNavClick(e, '#upcoming-events')}>Events</a>
             <a 
               href="https://www.linkedin.com/groups/4703553/" 
               className="btn btn--primary" 

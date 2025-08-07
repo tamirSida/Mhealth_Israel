@@ -36,10 +36,6 @@ export default function ParallaxHero() {
     >
       {/* Community Health Impact Hero */}
       <div className="hero-content" ref={elementRef}>
-        <div className={`hero-badge ${isIntersecting ? 'animate' : ''}`}>
-          <span className="hero-badge__text">22,500+ Healthcare Innovators</span>
-        </div>
-        
         <h1 className={`hero-title ${isIntersecting ? 'animate' : ''}`}>
           Building Israel's <span className="hero-highlight">HealthTech</span> Community
         </h1>
@@ -76,20 +72,6 @@ export default function ParallaxHero() {
           </a>
         </div>
         
-        <div className={`hero-impact-stats ${isIntersecting ? 'animate' : ''}`}>
-          <div className="impact-stat">
-            <span className="impact-number">$1.16B</span>
-            <span className="impact-label">Funding Raised</span>
-          </div>
-          <div className="impact-stat">
-            <span className="impact-number">200+</span>
-            <span className="impact-label">Events Hosted</span>
-          </div>
-          <div className="impact-stat">
-            <span className="impact-number">50+</span>
-            <span className="impact-label">Global Partners</span>
-          </div>
-        </div>
       </div>
     </section>
   )
