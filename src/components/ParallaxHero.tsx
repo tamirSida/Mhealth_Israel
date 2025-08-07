@@ -33,34 +33,40 @@ export default function ParallaxHero() {
       ref={heroRef}
       className="parallax-hero"
     >
-      {/* Floating particles */}
-      <div className="particles-container">
-        {particleData.map((particle, i) => (
-          <div
-            key={i}
-            className="particle"
-            style={{
-              left: `${particle.left}%`,
-              top: `${particle.top}%`,
-              animationDelay: `${particle.delay}s`,
-              animationDuration: `${particle.duration}s`
-            }}
-          />
-        ))}
-      </div>
-
-
-      {/* Morphing text effect */}
-      <div className="hero-content-wrapper" ref={elementRef}>
-        <div className={`morphing-text ${isIntersecting ? 'animate' : ''}`}>
-          <h1 className="hero-title-morph">
-            <span className="word-morph" data-text="Improving">Improving</span>
-            <span className="word-morph" data-text="the">the</span>
-            <span className="word-morph" data-text="Human">Human</span>
-            <span className="word-morph" data-text="Condition">Condition</span>
-          </h1>
+      {/* Community Health Impact Hero */}
+      <div className="hero-content" ref={elementRef}>
+        <div className={`hero-badge ${isIntersecting ? 'animate' : ''}`}>
+          <span className="hero-badge__text">22,500+ Healthcare Innovators</span>
         </div>
         
+        <h1 className={`hero-title ${isIntersecting ? 'animate' : ''}`}>
+          Building Israel's <span className="hero-highlight">HealthTech</span> Community
+        </h1>
+        
+        <p className={`hero-description ${isIntersecting ? 'animate' : ''}`}>
+          Connecting entrepreneurs, investors, and industry leaders to transform healthcare through innovation. 
+          Together, we're improving patient outcomes and advancing global health.
+        </p>
+        
+        <div className={`hero-actions ${isIntersecting ? 'animate' : ''}`}>
+          <button className="btn btn--primary btn--large">Join Our Community</button>
+          <button className="btn btn--secondary btn--large">View Impact</button>
+        </div>
+        
+        <div className={`hero-impact-stats ${isIntersecting ? 'animate' : ''}`}>
+          <div className="impact-stat">
+            <span className="impact-number">$1.16B</span>
+            <span className="impact-label">Funding Raised</span>
+          </div>
+          <div className="impact-stat">
+            <span className="impact-number">200+</span>
+            <span className="impact-label">Events Hosted</span>
+          </div>
+          <div className="impact-stat">
+            <span className="impact-number">50+</span>
+            <span className="impact-label">Global Partners</span>
+          </div>
+        </div>
       </div>
     </section>
   )
