@@ -25,8 +25,27 @@ export default function Footer() {
               target="_blank" 
               rel="noopener noreferrer"
             >
-              <i className="fab fa-linkedin"></i> Join Our LinkedIn Group
+              <i className="fab fa-linkedin" style={{ marginRight: 'var(--spacing-xs)' }}></i>
+              Join Our LinkedIn Group
             </a>
+          </div>
+          
+          <div className="mt-4" style={{ fontSize: 'var(--font-size-sm)', color: 'var(--text-muted)' }}>
+            <p>
+              Website built by{' '}
+              <a 
+                href="https://tamirsida.github.io/portfolio/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                style={{ 
+                  color: 'var(--accent-light)', 
+                  textDecoration: 'underline',
+                  fontWeight: '500'
+                }}
+              >
+                Tamir Sida
+              </a>
+            </p>
           </div>
         </div>
       </div>

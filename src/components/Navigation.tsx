@@ -45,8 +45,7 @@ export default function Navigation() {
           : 'rgba(26, 26, 46, 0.95)' 
       }}
     >
-      <div className="container">
-        <div className="nav__container">
+      <div className="nav__container">
           <a href="/" className="nav__logo" onClick={(e) => {
             e.preventDefault()
             // If we're already on home page, scroll to top
@@ -107,7 +106,6 @@ export default function Navigation() {
             </a>
           </div>
         </div>
-      </div>
     </nav>
   )
 }

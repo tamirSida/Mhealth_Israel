@@ -200,6 +200,7 @@ body {
   padding: 0 var(--spacing-base);
 }
 
+
 .container--fluid {
   max-width: none;
   padding: 0 var(--spacing-base);
@@ -294,7 +295,10 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: var(--spacing-base) var(--spacing-base);
+  padding: var(--spacing-base);
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .nav__logo {
@@ -319,6 +323,8 @@ body {
   list-style: none;
   align-items: center;
   gap: var(--spacing-lg);
+  margin: 0;
+  padding: 0;
 }
 
 .nav__link {
