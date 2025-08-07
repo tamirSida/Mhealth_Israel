@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import CMSControl from './CMS/CMSControl'
+import { useIntersectionObserver } from '@/hooks/useIntersectionObserver'
 
 interface FocusArea {
   title: string
@@ -25,6 +26,11 @@ export default function AboutSection() {
     }
   ])
 
+  const { elementRef, isIntersecting } = useIntersectionObserver({
+    threshold: 0.2,
+    triggerOnce: true
+  })
+
   const handleContentUpdate = (key: string, value: string) => {
     setContent(prev => ({ ...prev, [key]: value }))
   }
@@ -38,9 +44,9 @@ export default function AboutSection() {
   }
 
   return (
-    <section className="section about" id="about">
+    <section className="section about" id="about" ref={elementRef}>
       <div className="container">
-        <div className="text-center mb-5">
+        <div className={`text-center mb-5 fade-in-up ${isIntersecting ? 'animate' : ''}`}>
           <CMSControl
             elementId="aboutTitle"
             content={content.title}
@@ -62,7 +68,11 @@ export default function AboutSection() {
 
         <div className="grid grid--2">
           {focusAreas.map((area, index) => (
-            <div key={index} className="card">
+            <div 
+              key={index} 
+              className={`card ${index === 0 ? 'slide-in-left' : 'slide-in-right'} ${isIntersecting ? 'animate' : ''}`}
+              style={{ animationDelay: `${(index + 1) * 200}ms` }}
+            >
               <div className="card__header">
                 <CMSControl
                   elementId={`focus${index + 1}Title`}
