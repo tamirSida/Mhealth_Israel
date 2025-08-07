@@ -84,12 +84,12 @@ export default function ParallaxHero() {
       {/* Community Health Impact Hero */}
       <div className="hero-content" ref={elementRef}>
         <h1 className={`hero-title ${shouldAnimate ? 'animate' : ''}`}>
-          Building Israel's <span className="hero-highlight">HealthTech</span> Community
+          Building Israel&apos;s <span className="hero-highlight">HealthTech</span> Community
         </h1>
         
         <p className={`hero-description ${shouldAnimate ? 'animate' : ''}`}>
           Connecting entrepreneurs, investors, and industry leaders to transform healthcare through innovation. 
-          Together, we're improving patient outcomes and advancing global health.
+          Together, we&apos;re improving patient outcomes and advancing global health.
         </p>
         
         <div className={`hero-actions ${shouldAnimate ? 'animate' : ''}`}>

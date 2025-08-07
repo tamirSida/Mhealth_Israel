@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { cmsService } from '@/lib/cms'
 
 interface UseCMSOptions {
@@ -14,7 +14,7 @@ export function useCMS(elementId: string, defaultContent: string, options: UseCM
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
 
-  const loadContent = async () => {
+  const loadContent = useCallback(async () => {
     setIsLoading(true)
     setError(null)
     
@@ -29,7 +29,7 @@ export function useCMS(elementId: string, defaultContent: string, options: UseCM
     } finally {
       setIsLoading(false)
     }
-  }
+  }, [elementId])
 
   useEffect(() => {
     if (autoLoad && saveToFirebase) {

@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import Image from 'next/image'
+import Link from 'next/link'
 
 export default function Navigation() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
@@ -46,7 +47,7 @@ export default function Navigation() {
       }}
     >
       <div className="nav__container">
-          <a href="/" className="nav__logo" onClick={(e) => {
+          <Link href="/" className="nav__logo" onClick={(e) => {
             e.preventDefault()
             // If we're already on home page, scroll to top
             if (window.location.pathname === '/') {
@@ -67,7 +68,7 @@ export default function Navigation() {
               priority
               style={{ objectFit: 'contain' }}
             />
-          </a>
+          </Link>
           
           <ul className="nav__menu">
             <li><a href="#about" className="nav__link" onClick={(e) => handleNavClick(e, '#about')}>About</a></li>
