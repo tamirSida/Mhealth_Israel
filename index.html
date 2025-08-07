@@ -1,0 +1,1165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mHealth Israel - Leading HealthTech & ClimaTech Community</title>
+    <meta name="description" content="Israel's largest HealthTech and ClimaTech community with 22,500+ members. Improving the human condition; enhancing global health.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="logo.png">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* CSS Variables for Design System */
+        :root {
+            /* Colors inspired by logo */
+            --primary-orange: #FF6B35;
+            --primary-red: #E74C3C;
+            --primary-teal: #4A9B8E;
+            --primary-dark: #1A1A2E;
+            --secondary-dark: #16213E;
+            --accent-light: #64FFDA;
+            --text-primary: #FFFFFF;
+            --text-secondary: #CCD6F6;
+            --text-muted: #8892B0;
+            --background-dark: #0A0A1A;
+            --background-card: rgba(255, 255, 255, 0.05);
+            --gradient-primary: linear-gradient(135deg, var(--primary-orange) 0%, var(--primary-red) 100%);
+            --gradient-secondary: linear-gradient(135deg, var(--primary-teal) 0%, var(--accent-light) 100%);
+            
+            /* Typography */
+            --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-size-xs: 0.75rem;
+            --font-size-sm: 0.875rem;
+            --font-size-base: 1rem;
+            --font-size-lg: 1.125rem;
+            --font-size-xl: 1.25rem;
+            --font-size-2xl: 1.5rem;
+            --font-size-3xl: 1.875rem;
+            --font-size-4xl: 2.25rem;
+            --font-size-5xl: 3rem;
+            
+            /* Spacing */
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 0.75rem;
+            --spacing-base: 1rem;
+            --spacing-lg: 1.5rem;
+            --spacing-xl: 2rem;
+            --spacing-2xl: 3rem;
+            --spacing-3xl: 4rem;
+            
+            /* Shadows */
+            --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.1);
+            --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+            --shadow-glow: 0 0 20px rgba(100, 255, 218, 0.3);
+            
+            /* Borders */
+            --border-radius-sm: 0.375rem;
+            --border-radius-md: 0.5rem;
+            --border-radius-lg: 0.75rem;
+            --border-radius-xl: 1rem;
+        }
+
+        /* Base Reset & Typography */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: var(--font-primary);
+            background: var(--background-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Component Classes - OOP Approach */
+        
+        /* Button Components */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: var(--spacing-sm) var(--spacing-lg);
+            font-family: var(--font-primary);
+            font-weight: 600;
+            text-decoration: none;
+            border: none;
+            border-radius: var(--border-radius-md);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            font-size: var(--font-size-base);
+        }
+
+        .btn--primary {
+            background: var(--gradient-primary);
+            color: var(--text-primary);
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn--primary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn--secondary {
+            background: transparent;
+            color: var(--accent-light);
+            border: 2px solid var(--accent-light);
+        }
+
+        .btn--secondary:hover {
+            background: var(--accent-light);
+            color: var(--primary-dark);
+        }
+
+        .btn--large {
+            padding: var(--spacing-base) var(--spacing-2xl);
+            font-size: var(--font-size-lg);
+        }
+
+        /* Card Components */
+        .card {
+            background: var(--background-card);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: var(--border-radius-lg);
+            padding: var(--spacing-xl);
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .card__header {
+            margin-bottom: var(--spacing-base);
+        }
+
+        .card__title {
+            font-size: var(--font-size-xl);
+            font-weight: 700;
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .card__number {
+            font-size: var(--font-size-4xl);
+            font-weight: 800;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Section Components */
+        .section {
+            padding: var(--spacing-2xl) 0;
+        }
+
+        .section--hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section--hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--secondary-dark) 100%);
+            opacity: 0.9;
+            z-index: -1;
+        }
+
+        /* Container System */
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-base);
+        }
+
+        .container--fluid {
+            max-width: none;
+            padding: 0 var(--spacing-base);
+        }
+
+        /* Grid System */
+        .grid {
+            display: grid;
+            gap: var(--spacing-xl);
+        }
+
+        .grid--2 {
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        }
+
+        .grid--3 {
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        }
+
+        .grid--4 {
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        }
+
+        /* Typography Components */
+        .heading {
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: var(--spacing-base);
+        }
+
+        .heading--1 {
+            font-size: var(--font-size-3xl);
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .heading--2 {
+            font-size: var(--font-size-2xl);
+            color: var(--text-primary);
+        }
+
+        .heading--3 {
+            font-size: var(--font-size-xl);
+            color: var(--text-primary);
+        }
+
+        .text {
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        .text--large {
+            font-size: var(--font-size-lg);
+        }
+
+        .text--muted {
+            color: var(--text-muted);
+        }
+
+        .text--center {
+            text-align: center;
+        }
+
+        /* Navigation Components */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(26, 26, 46, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .nav__container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: var(--spacing-base) var(--spacing-base);
+        }
+
+        .nav__logo {
+            display: flex;
+            align-items: center;
+            font-size: var(--font-size-xl);
+            font-weight: 800;
+            color: var(--text-primary);
+            text-decoration: none;
+        }
+
+        .nav__logo img {
+            height: 2rem;
+            margin-right: var(--spacing-sm);
+        }
+
+        .nav__menu {
+            display: none;
+            list-style: none;
+            align-items: center;
+            gap: var(--spacing-lg);
+        }
+
+        .nav__link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav__link:hover {
+            color: var(--accent-light);
+        }
+
+        .nav__toggle {
+            display: block;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: var(--font-size-xl);
+            cursor: pointer;
+        }
+
+        /* Mobile Menu */
+        .nav__menu--mobile {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: rgba(26, 26, 46, 0.98);
+            backdrop-filter: blur(20px);
+            padding: var(--spacing-xl);
+            display: none;
+            flex-direction: column;
+            gap: var(--spacing-lg);
+        }
+
+        .nav__menu--mobile.active {
+            display: flex;
+        }
+
+        /* Hero Section */
+        .hero__content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero__subtitle {
+            font-size: var(--font-size-lg);
+            color: var(--accent-light);
+            font-weight: 600;
+            margin-bottom: var(--spacing-base);
+        }
+
+        .hero__title {
+            font-size: var(--font-size-4xl);
+            font-weight: 900;
+            margin-bottom: var(--spacing-lg);
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero__description {
+            font-size: var(--font-size-xl);
+            color: var(--text-secondary);
+            margin-bottom: var(--spacing-2xl);
+        }
+
+        .hero__cta {
+            display: flex;
+            gap: var(--spacing-base);
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* Stats Section */
+        .stats {
+            background: var(--primary-dark);
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat__number {
+            display: block;
+            font-size: var(--font-size-5xl);
+            font-weight: 900;
+            background: var(--gradient-secondary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .stat__label {
+            font-size: var(--font-size-lg);
+            color: var(--text-secondary);
+            font-weight: 600;
+        }
+
+        /* About Section */
+        .about {
+            background: linear-gradient(135deg, var(--secondary-dark) 0%, var(--primary-dark) 100%);
+        }
+
+        .about__content {
+            display: grid;
+            gap: var(--spacing-2xl);
+            align-items: center;
+        }
+
+        .about__text {
+            order: 2;
+        }
+
+        .about__image {
+            order: 1;
+            text-align: center;
+        }
+
+        .about__image img {
+            max-width: 100%;
+            border-radius: var(--border-radius-xl);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* CMS Controls */
+        .cms-control {
+            position: relative;
+            display: inline-block;
+        }
+
+        .cms-control:hover .cms-edit-btn {
+            opacity: 1;
+        }
+
+        .cms-edit-btn {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background: var(--accent-light);
+            color: var(--primary-dark);
+            border: none;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            font-size: var(--font-size-xs);
+            cursor: pointer;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 10;
+        }
+
+        /* Responsive Design */
+        @media (min-width: 768px) {
+            :root {
+                --font-size-3xl: 2.5rem;
+                --font-size-4xl: 3rem;
+                --font-size-5xl: 4rem;
+            }
+
+            .nav__menu {
+                display: flex;
+            }
+
+            .nav__toggle {
+                display: none;
+            }
+
+            .hero__title {
+                font-size: var(--font-size-5xl);
+            }
+
+            .about__content {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .about__text {
+                order: 1;
+            }
+
+            .about__image {
+                order: 2;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .container {
+                padding: 0 var(--spacing-xl);
+            }
+
+            .section {
+                padding: var(--spacing-3xl) 0;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.8s ease;
+        }
+
+        /* Utility Classes */
+        .mb-0 { margin-bottom: 0; }
+        .mb-1 { margin-bottom: var(--spacing-xs); }
+        .mb-2 { margin-bottom: var(--spacing-sm); }
+        .mb-3 { margin-bottom: var(--spacing-base); }
+        .mb-4 { margin-bottom: var(--spacing-lg); }
+        .mb-5 { margin-bottom: var(--spacing-xl); }
+        .mb-6 { margin-bottom: var(--spacing-2xl); }
+
+        .mt-0 { margin-top: 0; }
+        .mt-1 { margin-top: var(--spacing-xs); }
+        .mt-2 { margin-top: var(--spacing-sm); }
+        .mt-3 { margin-top: var(--spacing-base); }
+        .mt-4 { margin-top: var(--spacing-lg); }
+        .mt-5 { margin-top: var(--spacing-xl); }
+        .mt-6 { margin-top: var(--spacing-2xl); }
+
+        .text-center { text-align: center; }
+        .text-left { text-align: left; }
+        .text-right { text-align: right; }
+
+        .d-none { display: none; }
+        .d-block { display: block; }
+        .d-flex { display: flex; }
+        .d-grid { display: grid; }
+
+        .justify-center { justify-content: center; }
+        .justify-between { justify-content: space-between; }
+        .align-center { align-items: center; }
+
+        /* Loading States */
+        .loading {
+            opacity: 0.6;
+            pointer-events: none;
+        }
+
+        .spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--text-muted);
+            border-radius: 50%;
+            border-top-color: var(--accent-light);
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav" id="navbar">
+        <div class="container">
+            <div class="nav__container">
+                <a href="#home" class="nav__logo">
+                    <img src="logo.png" alt="mHealth Israel">
+                </a>
+                
+                <ul class="nav__menu">
+                    <li><a href="#about" class="nav__link">About</a></li>
+                    <li><a href="#impact" class="nav__link">Impact</a></li>
+                    <li><a href="#ecosystem" class="nav__link">Ecosystem</a></li>
+                    <li><a href="#events" class="nav__link">Events</a></li>
+                    <li><a href="https://www.linkedin.com/groups/4703553/" class="btn btn--primary" target="_blank">Join Community</a></li>
+                </ul>
+
+                <button class="nav__toggle" id="navToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+
+                <div class="nav__menu--mobile" id="mobileMenu">
+                    <a href="#about" class="nav__link">About</a>
+                    <a href="#impact" class="nav__link">Impact</a>
+                    <a href="#ecosystem" class="nav__link">Ecosystem</a>
+                    <a href="#events" class="nav__link">Events</a>
+                    <a href="https://www.linkedin.com/groups/4703553/" class="btn btn--primary" target="_blank">Join Community</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="section section--hero" id="home">
+        <div class="container">
+            <div class="hero__content fade-in">
+                <div class="cms-control">
+                    <p class="hero__subtitle">
+                        <span id="heroSubtitle">Founded by Levi Shapiro in 2014</span>
+                        <button class="cms-edit-btn" onclick="editContent('heroSubtitle')">
+                            <i class="fas fa-edit"></i>
+                        </button>
+                    </p>
+                </div>
+                
+                <div class="cms-control">
+                    <h1 class="hero__title">
+                        <span id="heroTitle">Israel's Leading HealthTech & ClimaTech Community</span>
+                        <button class="cms-edit-btn" onclick="editContent('heroTitle')">
+                            <i class="fas fa-edit"></i>
+                        </button>
+                    </h1>
+                </div>
+                
+                <div class="cms-control">
+                    <p class="hero__description">
+                        <span id="heroDescription">"Improving the human condition; enhancing global health."</span>
+                        <button class="cms-edit-btn" onclick="editContent('heroDescription')">
+                            <i class="fas fa-edit"></i>
+                        </button>
+                    </p>
+                </div>
+                
+                <div class="hero__cta">
+                    <a href="#impact" class="btn btn--primary btn--large">Explore Our Impact</a>
+                    <a href="#about" class="btn btn--secondary btn--large">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Impact Stats Section -->
+    <section class="section stats" id="impact">
+        <div class="container">
+            <div class="text-center mb-5">
+                <div class="cms-control">
+                    <h2 class="heading heading--2">
+                        <span id="impactTitle">Our Impact in Numbers</span>
+                        <button class="cms-edit-btn" onclick="editContent('impactTitle')">
+                            <i class="fas fa-edit"></i>
+                        </button>
+                    </h2>
+                </div>
+            </div>
+
+            <div class="grid grid--4">
+                <div class="stat">
+                    <div class="cms-control">
+                        <span class="stat__number" id="stat1Number">22,500+</span>
+                        <button class="cms-edit-btn" onclick="editContent('stat1Number')">
+                            <i class="fas fa-edit"></i>
+                        </button>
+                    </div>
+                    <div class="cms-control">
+                        <span class="stat__label" id="stat1Label">Active Members</span>
+                        <button class="cms-edit-btn" onclick="editContent('stat1Label')">
+                            <i class="fas fa-edit"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="stat">
+                    <div class="cms-control">
+                        <span class="stat__number" id="stat2Number">200+</span>
+                        <button class="cms-edit-btn" onclick="editContent('stat2Number')">
+                            <i class="fas fa-edit"></i>
+                        </button>
+                    </div>
+                    <div class="cms-control">
+                        <span class="stat__label" id="stat2Label">Events Hosted</span>
+                        <button class="cms-edit-btn" onclick="editContent('stat2Label')">
+                            <i class="fas fa-edit"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="stat">
+                    <div class="cms-control">
+                        <span class="stat__number" id="stat3Number">50+</span>
+                        <button class="cms-edit-btn" onclick="editContent('stat3Number')">
+                            <i class="fas fa-edit"></i>
+                        </button>
+                    </div>
+                    <div class="cms-control">
+                        <span class="stat__label" id="stat3Label">Multinational Partners</span>
+                        <button class="cms-edit-btn" onclick="editContent('stat3Label')">
+                            <i class="fas fa-edit"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="stat">
+                    <div class="cms-control">
+                        <span class="stat__number" id="stat4Number">20+</span>
+                        <button class="cms-edit-btn" onclick="editContent('stat4Number')">
+                            <i class="fas fa-edit"></i>
+                        </button>
+                    </div>
+                    <div class="cms-control">
+                        <span class="stat__label" id="stat4Label">Global Delegations</span>
+                        <button class="cms-edit-btn" onclick="editContent('stat4Label')">
+                            <i class="fas fa-edit"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section about" id="about">
+        <div class="container">
+            <div class="about__content">
+                <div class="about__text">
+                    <div class="cms-control">
+                        <h2 class="heading heading--2">
+                            <span id="aboutTitle">Building Israel's Innovation Ecosystem</span>
+                            <button class="cms-edit-btn" onclick="editContent('aboutTitle')">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                        </h2>
+                    </div>
+                    
+                    <div class="cms-control">
+                        <p class="text text--large mb-4">
+                            <span id="aboutDescription">mHealth Israel serves as a vital catalyst, connecting over 22,500 members from the technology and healthcare sectors. Founded in 2014 by digital health pioneer Levi Shapiro, our mission is to improve global health by fostering innovation and connecting Israeli startups with global partners, investors, and industry leaders.</span>
+                            <button class="cms-edit-btn" onclick="editContent('aboutDescription')">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                        </p>
+                    </div>
+
+                    <div class="grid grid--2 mt-4">
+                        <div class="card">
+                            <div class="card__header">
+                                <div class="cms-control">
+                                    <h3 class="card__title">
+                                        <span id="focus1Title">HealthTech Focus</span>
+                                        <button class="cms-edit-btn" onclick="editContent('focus1Title')">
+                                            <i class="fas fa-edit"></i>
+                                        </button>
+                                    </h3>
+                                </div>
+                            </div>
+                            <div class="cms-control">
+                                <p class="text">
+                                    <span id="focus1Description">Digital Health, MedTech, AI in diagnostics, medical devices, clinical intelligence, genomics, and digital therapeutics.</span>
+                                    <button class="cms-edit-btn" onclick="editContent('focus1Description')">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card__header">
+                                <div class="cms-control">
+                                    <h3 class="card__title">
+                                        <span id="focus2Title">ClimaTech Expansion</span>
+                                        <button class="cms-edit-btn" onclick="editContent('focus2Title')">
+                                            <i class="fas fa-edit"></i>
+                                        </button>
+                                    </h3>
+                                </div>
+                            </div>
+                            <div class="cms-control">
+                                <p class="text">
+                                    <span id="focus2Description">Recognizing the link between planetary health and human health, featuring companies in alternative proteins and biodiversity preservation.</span>
+                                    <button class="cms-edit-btn" onclick="editContent('focus2Description')">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="about__image">
+                    <div class="cms-control">
+                        <img id="aboutImage" src="https://via.placeholder.com/500x400/4A9B8E/FFFFFF?text=mHealth+Israel+Community" alt="mHealth Israel Community">
+                        <button class="cms-edit-btn" onclick="editImage('aboutImage')">
+                            <i class="fas fa-edit"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ecosystem Success Section -->
+    <section class="section" id="ecosystem">
+        <div class="container">
+            <div class="text-center mb-5">
+                <div class="cms-control">
+                    <h2 class="heading heading--2">
+                        <span id="ecosystemTitle">The Pulse of Israeli Innovation</span>
+                        <button class="cms-edit-btn" onclick="editContent('ecosystemTitle')">
+                            <i class="fas fa-edit"></i>
+                        </button>
+                    </h2>
+                </div>
+                <div class="cms-control">
+                    <p class="text text--large">
+                        <span id="ecosystemSubtitle">In the last quarter alone, our community has celebrated over $1.16 Billion in funding and acquisitions.</span>
+                        <button class="cms-edit-btn" onclick="editContent('ecosystemSubtitle')">
+                            <i class="fas fa-edit"></i>
+                        </button>
+                    </p>
+                </div>
+            </div>
+
+            <div class="grid grid--3">
+                <div class="card" id="successCard1">
+                    <div class="cms-control">
+                        <h3 class="card__title">
+                            <span id="success1Company">Aidoc</span>
+                            <button class="cms-edit-btn" onclick="editContent('success1Company')">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                        </h3>
+                    </div>
+                    <div class="cms-control">
+                        <p class="card__number">
+                            <span id="success1Amount">$150M</span>
+                            <button class="cms-edit-btn" onclick="editContent('success1Amount')">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                        </p>
+                    </div>
+                    <div class="cms-control">
+                        <p class="text">
+                            <span id="success1Description">Funding for clinical AI solutions</span>
+                            <button class="cms-edit-btn" onclick="editContent('success1Description')">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card" id="successCard2">
+                    <div class="cms-control">
+                        <h3 class="card__title">
+                            <span id="success2Company">ForSight Robotics</span>
+                            <button class="cms-edit-btn" onclick="editContent('success2Company')">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                        </h3>
+                    </div>
+                    <div class="cms-control">
+                        <p class="card__number">
+                            <span id="success2Amount">$125M</span>
+                            <button class="cms-edit-btn" onclick="editContent('success2Amount')">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                        </p>
+                    </div>
+                    <div class="cms-control">
+                        <p class="text">
+                            <span id="success2Description">Cataract eye surgery robotics</span>
+                            <button class="cms-edit-btn" onclick="editContent('success2Description')">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card" id="successCard3">
+                    <div class="cms-control">
+                        <h3 class="card__title">
+                            <span id="success3Company">Beewise</span>
+                            <button class="cms-edit-btn" onclick="editContent('success3Company')">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                        </h3>
+                    </div>
+                    <div class="cms-control">
+                        <p class="card__number">
+                            <span id="success3Amount">$50M</span>
+                            <button class="cms-edit-btn" onclick="editContent('success3Amount')">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                        </p>
+                    </div>
+                    <div class="cms-control">
+                        <p class="text">
+                            <span id="success3Description">ClimaTech - Protecting bee populations</span>
+                            <button class="cms-edit-btn" onclick="editContent('success3Description')">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Events Section -->
+    <section class="section" id="events">
+        <div class="container">
+            <div class="text-center mb-5">
+                <div class="cms-control">
+                    <h2 class="heading heading--2">
+                        <span id="eventsTitle">Connect and Learn with Global Leaders</span>
+                        <button class="cms-edit-btn" onclick="editContent('eventsTitle')">
+                            <i class="fas fa-edit"></i>
+                        </button>
+                    </h2>
+                </div>
+                <div class="cms-control">
+                    <p class="text text--large">
+                        <span id="eventsSubtitle">From exclusive dealmaker webinars to our flagship annual conference, we provide unparalleled access to the people shaping the future of health.</span>
+                        <button class="cms-edit-btn" onclick="editContent('eventsSubtitle')">
+                            <i class="fas fa-edit"></i>
+                        </button>
+                    </p>
+                </div>
+            </div>
+
+            <div class="text-center">
+                <a href="events.html" class="btn btn--primary btn--large">View All Events</a>
+                <button onclick="openCMS()" class="btn btn--secondary btn--large">Manage Content</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="section" style="background: var(--secondary-dark);">
+        <div class="container">
+            <div class="text-center">
+                <div class="cms-control">
+                    <p class="text">
+                        <span id="footerText">© 2025 mHealth Israel. All Rights Reserved.</span>
+                        <button class="cms-edit-btn" onclick="editContent('footerText')">
+                            <i class="fas fa-edit"></i>
+                        </button>
+                    </p>
+                </div>
+                <div class="mt-3">
+                    <a href="https://www.linkedin.com/groups/4703553/" class="btn btn--secondary" target="_blank">
+                        <i class="fab fa-linkedin"></i> Join Our LinkedIn Group
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- CMS Modal -->
+    <div id="cmsModal" class="cms-modal" style="display: none;">
+        <div class="cms-modal-content">
+            <div class="cms-modal-header">
+                <h3>Edit Content</h3>
+                <button onclick="closeCMS()" class="cms-close">&times;</button>
+            </div>
+            <div class="cms-modal-body">
+                <div id="cmsForm">
+                    <!-- Dynamic form content will be inserted here -->
+                </div>
+            </div>
+            <div class="cms-modal-footer">
+                <button onclick="saveContent()" class="btn btn--primary">Save</button>
+                <button onclick="closeCMS()" class="btn btn--secondary">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Mobile Navigation
+        document.getElementById('navToggle').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            mobileMenu.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking on links
+        document.querySelectorAll('.nav__link').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('mobileMenu').classList.remove('active');
+            });
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Simple CMS functionality
+        let currentEditId = null;
+
+        function editContent(elementId) {
+            currentEditId = elementId;
+            const element = document.getElementById(elementId);
+            const currentValue = element.textContent;
+            
+            const modal = document.getElementById('cmsModal');
+            const form = document.getElementById('cmsForm');
+            
+            form.innerHTML = `
+                <label>Content:</label>
+                <textarea id="editTextarea" style="width: 100%; min-height: 100px; padding: 10px; border-radius: 4px; border: 1px solid #ccc;">${currentValue}</textarea>
+            `;
+            
+            modal.style.display = 'block';
+        }
+
+        function editImage(elementId) {
+            currentEditId = elementId;
+            const element = document.getElementById(elementId);
+            const currentSrc = element.src;
+            
+            const modal = document.getElementById('cmsModal');
+            const form = document.getElementById('cmsForm');
+            
+            form.innerHTML = `
+                <label>Image URL:</label>
+                <input type="url" id="editInput" value="${currentSrc}" style="width: 100%; padding: 10px; border-radius: 4px; border: 1px solid #ccc;">
+                <p style="margin-top: 10px; font-size: 14px; color: #666;">Enter a URL for the image or use a placeholder service like https://via.placeholder.com/</p>
+            `;
+            
+            modal.style.display = 'block';
+        }
+
+        function saveContent() {
+            if (!currentEditId) return;
+            
+            const element = document.getElementById(currentEditId);
+            const textarea = document.getElementById('editTextarea');
+            const input = document.getElementById('editInput');
+            
+            if (textarea) {
+                element.textContent = textarea.value;
+            } else if (input) {
+                element.src = input.value;
+            }
+            
+            // In a real app, this would save to Firebase
+            console.log('Content saved for:', currentEditId);
+            
+            closeCMS();
+        }
+
+        function closeCMS() {
+            document.getElementById('cmsModal').style.display = 'none';
+            currentEditId = null;
+        }
+
+        function openCMS() {
+            alert('Full CMS interface would open here - manage all content, create events, etc.');
+        }
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.style.background = 'rgba(26, 26, 46, 0.98)';
+            } else {
+                navbar.style.background = 'rgba(26, 26, 46, 0.95)';
+            }
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for animation
+        document.querySelectorAll('.card, .stat, .about__text').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+
+    <!-- CMS Modal Styles -->
+    <style>
+        .cms-modal {
+            position: fixed;
+            z-index: 10000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .cms-modal-content {
+            background: var(--primary-dark);
+            border-radius: var(--border-radius-lg);
+            width: 90%;
+            max-width: 500px;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        .cms-modal-header {
+            padding: var(--spacing-lg);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .cms-modal-header h3 {
+            margin: 0;
+            color: var(--text-primary);
+        }
+
+        .cms-close {
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .cms-modal-body {
+            padding: var(--spacing-lg);
+        }
+
+        .cms-modal-body label {
+            display: block;
+            margin-bottom: var(--spacing-xs);
+            color: var(--text-secondary);
+            font-weight: 600;
+        }
+
+        .cms-modal-footer {
+            padding: var(--spacing-lg);
+            border-top: 1px solid rgba(255,255,255,0.1);
+            display: flex;
+            gap: var(--spacing-base);
+            justify-content: flex-end;
+        }
+    </style>
+</body>
+</html>
