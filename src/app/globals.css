@@ -1180,8 +1180,16 @@ body {
   display: flex;
   align-items: center;
   white-space: nowrap;
-  animation: marqueeScroll 8s linear infinite;
   gap: var(--spacing-2xl);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s ease;
+}
+
+.hero-marquee-wrapper.marquee-active .hero-marquee {
+  animation: marqueeScroll 8s linear infinite;
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .hero-stat-item {
@@ -1194,7 +1202,7 @@ body {
   position: relative;
 }
 
-.hero-marquee:hover {
+.hero-marquee-wrapper.marquee-active .hero-marquee:hover {
   animation-play-state: paused;
 }
 
@@ -1210,7 +1218,7 @@ body {
     flex-shrink: 0;
   }
   
-  .hero-marquee {
+  .hero-marquee-wrapper.marquee-active .hero-marquee {
     animation-duration: 6s;
   }
   
@@ -1258,7 +1266,7 @@ body {
     padding: 0 var(--spacing-xs);
   }
   
-  .hero-marquee {
+  .hero-marquee-wrapper.marquee-active .hero-marquee {
     animation-duration: 5s;
   }
   

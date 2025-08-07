@@ -11,6 +11,7 @@ interface MarqueeStatData {
 export default function ParallaxHero() {
   const heroRef = useRef<HTMLElement>(null)
   const [isMobile, setIsMobile] = useState(false)
+  const [marqueeStarted, setMarqueeStarted] = useState(false)
   const { elementRef, isIntersecting } = useIntersectionObserver({
     threshold: 0.1,
     triggerOnce: false
@@ -28,6 +29,17 @@ export default function ParallaxHero() {
 
   // On mobile, always show animations. On desktop, use intersection observer
   const shouldAnimate = isMobile || isIntersecting
+
+  // Start marquee after hero content animates
+  useEffect(() => {
+    if (shouldAnimate) {
+      const timer = setTimeout(() => {
+        setMarqueeStarted(true)
+      }, 1200) // Start marquee 1.2s after hero content starts animating
+      
+      return () => clearTimeout(timer)
+    }
+  }, [shouldAnimate])
 
   // Stats data for marquee
   const [stats] = useState<MarqueeStatData[]>([
@@ -99,7 +111,7 @@ export default function ParallaxHero() {
       </div>
 
       {/* Marquee Stats Strip */}
-      <div className="hero-marquee-wrapper">
+      <div className={`hero-marquee-wrapper ${marqueeStarted ? 'marquee-active' : ''}`}>
         <div className="hero-marquee">
           {duplicatedStats.map((stat, index) => (
             <React.Fragment key={`fragment-${index}`}>
