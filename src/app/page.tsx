@@ -1,7 +1,7 @@
 'use client'
 
 import Navigation from '@/components/Navigation'
-import HeroSection from '@/components/HeroSection'
+import ParallaxHero from '@/components/ParallaxHero'
 import StatsSection from '@/components/StatsSection'
 import AboutSection from '@/components/AboutSection'
 import EcosystemSection from '@/components/EcosystemSection'
@@ -13,7 +13,7 @@ export default function HomePage() {
     <>
       <Navigation />
       <main>
-        <HeroSection />
+        <ParallaxHero />
         <StatsSection />
         <AboutSection />
         <EcosystemSection />
