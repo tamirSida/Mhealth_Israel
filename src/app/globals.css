@@ -829,10 +829,10 @@ body {
 /* ParallaxHero Emotional UX Styles */
 .parallax-hero {
   position: relative;
-  min-height: 80vh;
+  min-height: 100vh;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: space-between;
   overflow: hidden;
   background: linear-gradient(135deg, 
     var(--secondary-dark) 0%, 
@@ -859,6 +859,11 @@ body {
   text-align: center;
   max-width: 1000px;
   padding: var(--spacing-xl);
+  margin: auto;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 
@@ -924,20 +929,31 @@ body {
 
 /* Responsive adjustments for ParallaxHero */
 @media (max-width: 768px) {
+  .parallax-hero {
+    min-height: 100vh;
+    min-height: 100svh;
+    padding-top: 80px;
+  }
+  
+  .hero-content {
+    padding: var(--spacing-base);
+    min-height: 0;
+  }
+  
   .hero-title {
     font-size: var(--font-size-3xl);
+    margin-bottom: var(--spacing-base);
   }
   
   .hero-description {
-    font-size: var(--font-size-lg);
+    font-size: var(--font-size-base);
+    margin-bottom: var(--spacing-lg);
   }
-  
   
   .hero-actions {
-    flex-direction: column;
-    align-items: center;
+    justify-content: center;
+    margin-bottom: var(--spacing-base);
   }
-  
 }
 
 /* Upcoming Events Section - HLTH Style Swipe Interface */
@@ -1172,6 +1188,148 @@ body {
   
   .five-lines {
     font-size: var(--font-size-base);
+  }
+}
+
+/* Hero Marquee - Integrated into Hero Section */
+.hero-marquee-wrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  padding: var(--spacing-base) 0;
+  z-index: 3;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+}
+
+.hero-marquee-title {
+  text-align: center;
+  margin-bottom: var(--spacing-base);
+}
+
+.marquee-title {
+  font-size: var(--font-size-lg);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0;
+  opacity: 0.9;
+}
+
+.hero-marquee-wrapper::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--gradient-primary);
+  z-index: 1;
+}
+
+.hero-marquee-wrapper::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--gradient-secondary);
+  z-index: 1;
+}
+
+.hero-marquee {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  animation: marqueeScroll 8s linear infinite;
+  gap: var(--spacing-2xl);
+}
+
+.hero-stat-item {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  min-width: 200px;
+  padding: 0 var(--spacing-lg);
+  position: relative;
+}
+
+.hero-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* Responsive adjustments for Hero Marquee */
+@media (max-width: 768px) {
+  .hero-marquee-wrapper {
+    padding: var(--spacing-sm) 0;
+    position: relative;
+    flex-shrink: 0;
+  }
+  
+  .hero-marquee {
+    animation-duration: 6s;
+  }
+  
+  .hero-stat-item {
+    min-width: 140px;
+    padding: 0 var(--spacing-sm);
+  }
+  
+  .marquee-title {
+    font-size: var(--font-size-base);
+    margin-bottom: var(--spacing-xs);
+  }
+  
+  .stat-number {
+    font-size: var(--font-size-xl);
+  }
+  
+  .stat-label {
+    font-size: var(--font-size-sm);
+  }
+}
+
+@media (max-width: 480px) {
+  .parallax-hero {
+    min-height: 100vh;
+    min-height: 100svh;
+    padding-top: 70px;
+  }
+  
+  .hero-content {
+    padding: var(--spacing-sm);
+  }
+  
+  .hero-title {
+    font-size: var(--font-size-2xl);
+    line-height: 1.2;
+  }
+  
+  .hero-description {
+    font-size: var(--font-size-sm);
+    line-height: 1.5;
+  }
+  
+  .hero-stat-item {
+    min-width: 110px;
+    padding: 0 var(--spacing-xs);
+  }
+  
+  .hero-marquee {
+    animation-duration: 5s;
+  }
+  
+  .stat-number {
+    font-size: var(--font-size-lg);
+  }
+  
+  .stat-label {
+    font-size: var(--font-size-xs);
+  }
+  
+  .marquee-title {
+    font-size: var(--font-size-sm);
   }
 }
 

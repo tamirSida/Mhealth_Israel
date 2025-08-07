@@ -2,7 +2,6 @@
 
 import Navigation from '@/components/Navigation'
 import ParallaxHero from '@/components/ParallaxHero'
-import StatsSection from '@/components/StatsSection'
 import AboutSection from '@/components/AboutSection'
 import UpcomingEvents from '@/components/UpcomingEvents'
 import EcosystemSection from '@/components/EcosystemSection'
@@ -15,7 +14,6 @@ export default function HomePage() {
       <Navigation />
       <main>
         <ParallaxHero />
-        <StatsSection />
         <AboutSection />
         <UpcomingEvents />
         <EcosystemSection />
