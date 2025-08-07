@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import { useAuth } from '@/hooks/useAuth'
 import CMSControl from './CMS/CMSControl'
 
 export default function EventsSection() {
@@ -9,6 +10,8 @@ export default function EventsSection() {
     title: "Connect and Learn with Global Leaders",
     subtitle: "From exclusive dealmaker webinars to our flagship annual conference, we provide unparalleled access to the people shaping the future of health."
   })
+
+  const { isAdmin } = useAuth()
 
   const handleContentUpdate = (key: string, value: string) => {
     setContent(prev => ({ ...prev, [key]: value }))
@@ -43,9 +46,11 @@ export default function EventsSection() {
           <Link href="/events" className="btn btn--primary btn--large">
             View All Events
           </Link>
-          <button onClick={openCMS} className="btn btn--secondary btn--large">
-            Manage Content
-          </button>
+          {isAdmin && (
+            <button onClick={openCMS} className="btn btn--secondary btn--large">
+              Manage Content
+            </button>
+          )}
         </div>
       </div>
     </section>

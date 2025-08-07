@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import { useAuth } from '@/hooks/useAuth'
 import CMSModal from './CMSModal'
 
 interface CMSControlProps {
@@ -12,6 +13,7 @@ interface CMSControlProps {
 
 export default function CMSControl({ elementId, content, onUpdate, children }: CMSControlProps) {
   const [isModalOpen, setIsModalOpen] = useState(false)
+  const { isAdmin, loading } = useAuth()
 
   const handleEdit = () => {
     setIsModalOpen(true)
@@ -24,6 +26,11 @@ export default function CMSControl({ elementId, content, onUpdate, children }: C
 
   const handleClose = () => {
     setIsModalOpen(false)
+  }
+
+  // Don't show edit controls while loading or if user is not admin
+  if (loading || !isAdmin) {
+    return <>{children}</>
   }
 
   return (

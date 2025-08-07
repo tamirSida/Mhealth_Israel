@@ -51,9 +51,10 @@ export default function Navigation() {
             <Image 
               src="/logo.png" 
               alt="mHealth Israel" 
-              width={32} 
-              height={32}
+              width={120} 
+              height={40}
               priority
+              style={{ objectFit: 'contain' }}
             />
           </a>
           

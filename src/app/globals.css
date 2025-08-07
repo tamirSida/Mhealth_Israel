@@ -6,7 +6,7 @@
   --primary-teal: #4A9B8E;
   --primary-dark: #1A1A2E;
   --secondary-dark: #16213E;
-  --accent-light: #64FFDA;
+  --accent-light: #4A9B8E;
   --text-primary: #FFFFFF;
   --text-secondary: #CCD6F6;
   --text-muted: #8892B0;
@@ -274,11 +274,14 @@ body {
   font-weight: 800;
   color: var(--text-primary);
   text-decoration: none;
+  height: 50px;
 }
 
 .nav__logo img {
-  height: 2rem;
-  margin-right: var(--spacing-sm);
+  height: auto;
+  max-height: 40px;
+  width: auto;
+  object-fit: contain;
 }
 
 .nav__menu {
