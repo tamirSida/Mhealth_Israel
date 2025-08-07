@@ -30,6 +30,7 @@ export default function ParallaxHero() {
 
   return (
     <section 
+      id="home"
       ref={heroRef}
       className="parallax-hero"
     >
@@ -49,8 +50,30 @@ export default function ParallaxHero() {
         </p>
         
         <div className={`hero-actions ${isIntersecting ? 'animate' : ''}`}>
-          <button className="btn btn--primary btn--large">Join Our Community</button>
-          <button className="btn btn--secondary btn--large">View Impact</button>
+          <a 
+            href="https://www.linkedin.com/groups/4703553/" 
+            className="btn btn--primary btn--large"
+            target="_blank" 
+            rel="noopener noreferrer"
+          >
+            Join Our Community
+          </a>
+          <a 
+            href="#impact" 
+            className="btn btn--secondary btn--large"
+            onClick={(e) => {
+              e.preventDefault()
+              const target = document.querySelector('#impact')
+              if (target) {
+                target.scrollIntoView({
+                  behavior: 'smooth',
+                  block: 'start'
+                })
+              }
+            }}
+          >
+            View Impact
+          </a>
         </div>
         
         <div className={`hero-impact-stats ${isIntersecting ? 'animate' : ''}`}>
